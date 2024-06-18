@@ -1,0 +1,479 @@
+/*
+https://moderncss.dev/modern-css-for-dynamic-component-based-architecture/ */
+/* Baseline for default links */
+a:not([class]) {
+  /* Relatively sized thickness and offset */
+  text-decoration-thickness: max(0.08em, 1px);
+  text-underline-offset: 0.15em;
+}
+
+:focus-visible {
+  --outline-size: max(2px, 0.15em);
+
+  outline: var(--outline-width, var(--outline-size)) var(--outline-style, solid) var(--outline-color, currentColor);
+  outline-offset: var(--outline-offset, var(--outline-size));
+}
+
+/*  THEME | Dark ----------------------------------
+*/
+:root {
+  /* scroll-to-top */
+  --bg-accent-color: 48,190,255;
+  --bg-accent-opacity: 0.5;
+  --scrollbar-color: rgba(48,190,255,0.0);
+  --stroke-opacity: 1;
+
+  --bg-color: 19, 20, 23;
+  --bg-opacity: 1.0;
+  --bg-02-color: 39, 49, 54;
+  --bg-02-opacity: 1.0;
+  --bg-panel-color: 255, 255, 255;
+  --bg-panel-opacity: 0.05;
+  --bg-active-color: 255, 255, 255;
+  --bg-active-opacity: 0.05;
+  --bg-accent-color: 48, 190, 255;
+  --bg-accent-opacity: 0.5;
+  --bg-grd: linear-gradient(180deg,
+      rgba(50, 70, 80, 0.9) 0,
+      #0d101b 100%);
+  --txt-color: 255, 255, 255;
+  --txt-opacity: 0.7;
+  --txt-active: 255, 255, 255;
+  --txt-active-opacity: 1.0;
+  --txt-link: 102, 204, 255;
+  --txt-link-opacity: .5;
+  --txt-muted: 255, 255, 255;
+  --txt-muted-opacity: 0.5;
+  --txt-shadow: -1px 1px rgba(var(--txt-shadow-color),
+      var(--txt-shadow-opacity));
+  --txt-shadow-color: 0, 0, 0;
+  --txt-shadow-opacity: 1.0;
+}
+
+
+/*  THEME | Light ----------------------------------
+*/
+@media (prefers-color-scheme: dark) {
+  :root:has(#toggleTheme:checked) {
+    --bg-color: 0, 0, 0;
+    --bg-opacity: 0.8;
+    --bg-02-color: 0, 0, 0;
+    --bg-02-opacity: 0.5;
+    --bg-panel-color: 255, 255, 255;
+    --bg-panel-opacity: 0.2;
+    --bg-active-color: 255, 255, 255;
+    --bg-active-opacity: 0.2;
+    --bg-grd: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.7) 0,
+        rgba(255, 255, 255, 0.4) 100%);
+    --txt-color: 0, 0, 0;
+    --txt-opacity: 1.0;
+    --txt-active: 0, 0, 0;
+    --txt-active-opacity: 1.0;
+    --txt-muted: 0, 0, 0;
+    --txt-muted-opacity: 0.5;
+    --txt-shadow: -1px 1px 0 rgba(var(--txt-shadow-color),
+        var(--txt-shadow-opacity));
+    --txt-shadow-color: 255, 255, 255;
+    --txt-shadow-opacity: 0.3;
+  }
+}
+
+body,
+html,
+iframe {
+  background-color: var(--bg-color);
+}
+
+header,
+main,
+footer {
+  background-color: rgba(var(--bg-panel-color),
+      var(--bg-panel-opacity));
+}
+
+nav a {
+  text-decoration: none;
+  text-wrap: nowrap;
+}
+
+
+demo-buttons {
+  cursor: pointer;
+}
+
+
+
+/*  LABELS -------------------------------------
+*/
+label:hover,
+label:has(input:checked) {
+  background-color: rgba(var(--bg-active-color),
+      var(--bg-active-opacity));
+  color: rgba(var(--txt-active),
+      var(--txt-active-opacity));
+}
+
+
+
+
+
+/* LOW LEVEL ELEMENTS ---------------------------------- */
+
+/* Scrollable */
+section {
+  background:
+    /* cover */
+    linear-gradient(var(--bg-panel-color) 33%,
+      rgba(var(--bg-panel-color), 0.0)),
+    linear-gradient(rgba(var(--bg-panel-color), 0.0),
+      var(--bg-panel-color) 66%) 0 100%,
+    /* drop-shadow */
+    radial-gradient(farthest-side at 50% 0,
+      rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)),
+    radial-gradient(farthest-side at 50% 100%,
+      rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)) 0 100%;
+  background-color: rgba(var(--bg-panel-color), --bg-panel-opacity);
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+  background-size: 100% 36px, 100% 36px, 100% 5px, 100% 5px;
+}
+
+meta-data {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  font-stretch: 100;
+  font-style: italic;
+  letter-spacing: 0.04rem;
+}
+
+input {
+  display: none;
+  accent-color: rgba(var(--accent));
+}
+
+
+/* LOOK/FEEL ---------------------------------- */
+body {
+  background-color: rgba(var(--bg-color), var(--bg-opacity));
+  color: rgba(var(--txt-color), var(--txt-opacity));
+  font-family: 'Oxanium', 'Electrolize', sans-serif;
+  font-size: 1rem;
+  text-shadow: var(--txt-shadow);
+}
+
+html:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100dvh;
+  z-index: -5;
+  background: var(--bg-grd);
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100dvh;
+  background-attachment: initial;
+  background-color: transparent;
+  background-image: url('../images/app/pattern.png');
+  background-size: 4.6875rem;
+  background-repeat: repeat;
+  z-index: -5;
+}
+
+html:after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -10;
+  height: 100dvh;
+  background-color: rgba(var(--bg-02-color), var(--bg-02-opacity));
+  background-image: url('../images/logos/TROVE.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: inherit;
+  /* background-size: cover; */
+  background-size: 50% 50%;
+}
+
+
+/*  SCROLLBARS ----------------------------------
+*/
+*::-webkit-scrollbar {
+  display: block;
+  width: 1rem;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(48, 190, 255, 0.0);
+}
+
+*::-webkit-scrollbar-track-piece {
+  background-color: rgba(48, 190, 255, 0.0);
+}
+
+* {
+  --scrollbar-color: rgba(48, 190, 255, 0.0);
+}
+
+*:hover,
+*:focus,
+*:focus-within {
+  --scrollbar-color: rgba(var(--bg-accent-color), var(--bg-accent-opacity)) !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(48, 190, 255, 0.0);
+  border: 5px solid transparent;
+  border-radius: 1.5rem;
+  box-shadow: 0.25rem 0 0 0.25rem var(--scrollbar-color) inset;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-color);
+  border: 0 solid transparent;
+  box-shadow: none;
+}
+
+/* FIREFOX */
+/* Target elements, not :root{} */
+/* https://codeconvey.com/custom-scrollbar-css-for-all-browsers/ */
+section {
+  scrollbar-color: rgba(48, 190, 255, 0.0) rgba(48, 190, 255, 0.0);
+  /* Thumb and track color */
+  scrollbar-width: thin;
+  /* Track width */
+}
+
+section:hover {
+  scrollbar-color: rgba(48, 190, 255, 0.3) rgba(48, 190, 255, 0.0);
+}
+
+
+
+/*  MENUS --------------------------------------
+*/
+label[for='oneMenu'] {
+  position: relative;
+}
+
+label[for='oneMenu']:hover menu {
+  display: grid;
+}
+
+menu {
+  position: absolute;
+  top: 20px;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+menu li {
+  list-style: none;
+  display: grid;
+}
+
+/* Default message for browsers that do not support :has() */
+.support::before {
+  content: "Your browser does not support some advanced features (':has()' is not supported).";
+  display: block;
+}
+
+/* Change the message for browsers that support :has() */
+@supports (selector(:has(*))) {
+  .support::before {
+    content: "Great! Your browser supports advanced features (':has()' is supported).";
+  }
+}
+
+span-bold {
+  font-weight: 900;
+}
+
+iframe {
+  background-color: transparent;
+}
+
+section div {
+  overflow: auto;
+}
+
+iframe section article img {
+  mix-blend-mode: multiply;
+  opacity: 50% !important;
+}
+
+
+
+a {
+  color: rgba(var(--txt-link), 0.7);
+  text-decoration: none;
+
+  box-shadow: 0 1px 0 rgba(0, 255, 255, 0.0);
+  transition: all 250ms;
+}
+
+a:hover {
+  color: rgba(var(--txt-link), 1.0);
+  box-shadow: 0 1px 0 rgba(var(--txt-link), 1.0);
+}
+
+app-logo a {
+  --txt-link: transparent;
+}
+
+/* loader */
+.loading {
+  width: 5rem;
+  height: 5rem;
+  display: grid;
+  align-self: center;
+  justify-self: center;
+}
+
+.loading::before,
+.loading::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 1rem solid rgba(102, 204, 255, 1.0);
+  opacity: 0.3;
+  border-radius: 50%;
+}
+
+.loading::before {
+  border-left: 1rem solid rgba(0, 0, 0, 0.0);
+  border-right: 1rem solid rgba(0, 0, 0, 0.0);
+  animation: spin01 3000ms infinite ease alternate;
+}
+
+.loading::after {
+  border-left: 1rem solid rgba(0, 0, 0, 0.0);
+  border-right: 1rem solid rgba(0, 0, 0, 0.0);
+  border-top: 1rem solid rgba(0, 0, 0, 0.0);
+  animation: spin02 4000ms infinite linear;
+}
+
+@keyframes spin01 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes spin02 {
+  0% {
+    transform: rotate(720deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+em {
+  font-style: normal;
+  font-weight: bold;
+  color: var(--txt-active);
+  letter-spacing: 1px;
+}
+
+/* #Progress
+================================================== */
+/* background circle dark mode */
+scroll-to-top {
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 50%;
+  /*background-color: #333;*/
+  box-shadow: inset 0 0 0 7px rgba(var(--bg-accent-color), 0.2);
+  /*border: 2px solid rgba(var(--bg-accent-color), 0.2);*/
+  box-sizing: border-box;
+  display: grid;
+
+  position: sticky;
+  bottom: 1rem;
+  justify-self: end;
+  margin-inline-end: 1rem;
+  cursor: pointer;
+
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+scroll-to-top.active-progress {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* arrow dark mode */
+scroll-to-top::after {
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+
+  border-style: solid;
+  border-width: 0.25em 0.25em 0 0;
+  border-color: rgba(var(--bg-accent-color), 0.8);
+  content: '';
+  height: 0.45em;
+  width: 0.45em;
+  transform: rotate(-45deg);
+
+  cursor: pointer;
+  z-index: 1;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+scroll-to-top:hover {
+  box-shadow: inset 0 0 0 7px rgba(var(--bg-accent-color), 0.4);
+}
+
+scroll-to-top:hover::after {border-color: rgb(var(--bg-accent-color), 1.0);}
+
+scroll-to-top svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* progress circle dark */
+scroll-to-top svg path {
+  stroke: rgba(var(--bg-accent-color), 1);
+  stroke-width: 4;
+  fill: none;
+  box-sizing: border-box;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
