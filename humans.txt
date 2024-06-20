@@ -1,24 +1,24 @@
-/* TEAM */
-  CoolBro: Sri
-  Site: email@coolplace.com, link to a contact form, etc.
-  Twitter/X: @someplacereallycool
-  Location: Everywhere != Nowhere
+/* TEAM - - - - - - - - - - - - - - - - - - - - - - - - -
+*/ CoolBro: Sri
+   Site: email@coolplace.com, link to a contact form, etc.
+   Twitter/X: @someplacereallycool
+   Location: Everywhere != Nowhere
 
-  UI/UX SME: D7460N
-  Site: dragon@dragontheory.com, link to a contact form, etc.
-  Twitter/X: @dragontheory
-  Location: Everywhere != Nowhere
+   UI/UX SME: D7460N
+   Site: dragon@dragontheory.com, link to a contact form, etc.
+   Twitter/X: @dragontheory
+   Location: Everywhere != Nowhere
 							
-/* THANKS */
-  Name: the little guy
+/* THANKS - - - - - - - - - - - - - - - - - - - - - - - - -
+*/ Name: the little guy
 
-/* SITE */
-  Last update: 2024/06/20
-  Standards: HTML5, CSS3, baked-in accessibility, W3C Standards Compliant
-  Components: Moden vanilla HTML and CSS
-  Software: VSCode, Notepad++, Photoshop, Illustrator
+/* SITE - - - - - - - - - - - - - - - - - - - - - - - - -
+*/ Last update: 2024/06/20
+   Standards: HTML5, CSS3, baked-in accessibility, W3C Standards Compliant
+   Components: Moden vanilla HTML and CSS
+   Software: VSCode, Notepad++, Photoshop, Illustrator
 
-/* NOTES */
-  No build required.
-  No compilation required.
-  No server required.
+/* NOTES - - - - - - - - - - - - - - - - - - - - - - - - -
+*/ No build required.
+   No compilation required.
+   No server required.
