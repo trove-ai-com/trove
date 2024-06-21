@@ -1,6 +1,6 @@
 <p align="center">
 <img
-  src="assets/images/logos/TROVE.svg"
+  src="assets/images/logos/TROVE-Ai_squared_2.svg"
   alt="TROVE-AI | Forefront of Innovation"
   title="TROVE-AI"
   width="400" />
